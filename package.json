@@ -4,7 +4,7 @@
   "description": "Project description",
   "author": "",
   "scripts": {
-    "dev": "dotenv -e .bk.local.env -- bk-cli-service-webpack dev",
+    "dev": "bk-cli-service-webpack dev",
     "build": "bk-cli-service-webpack build",
     "server": "node ./paas-server/index.js",
     "lint": "eslint --ext .js,.vue ./src",
@@ -13,12 +13,14 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.27.6",
     "art-template": "^4.13.2",
     "axios": "^0.21.1",
     "babel-plugin-import-bk-magic-vue": "latest",
     "bk-magic-vue": "latest",
     "connect-history-api-fallback": "^1.6.0",
     "cookie-parser": "^1.4.5",
+    "element-ui": "^2.15.14",
     "enhanced-resolve": "^5.10.0",
     "express": "^4.17.1",
     "express-art-template": "^1.0.1",
@@ -42,10 +44,9 @@
     "@blueking/babel-preset-bk": "^2.1.0-beta7",
     "@blueking/cli-service-webpack": "0.0.0-beta.91",
     "@blueking/eslint-config-bk": "^2.0.0",
-    "dotenv-cli": "^11.0.0"
+    "sass": "^1.89.2"
   },
   "engines": {
-    "node": ">= 14.16.1",
-    "npm": ">= 6.4.1 <7"
+    "node": ">= 16.16.0"
   }
 }

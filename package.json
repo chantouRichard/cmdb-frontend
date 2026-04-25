@@ -4,7 +4,7 @@
   "description": "Project description",
   "author": "",
   "scripts": {
-    "dev": "bk-cli-service-webpack dev",
+    "dev": "dotenv -e .bk.local.env -- bk-cli-service-webpack dev",
     "build": "bk-cli-service-webpack build",
     "server": "node ./paas-server/index.js",
     "lint": "eslint --ext .js,.vue ./src",
@@ -33,15 +33,16 @@
     "query-string": "^7.1.1",
     "request": "^2.88.2",
     "url-parse": "^1.5.10",
+    "vue": "2.6.14",
     "vue-router": "~3.0.6",
-    "vuex": "~3.1.1",
     "vue-template-compiler": "2.6.14",
-    "vue": "2.6.14"
+    "vuex": "~3.1.1"
   },
   "devDependencies": {
     "@blueking/babel-preset-bk": "^2.1.0-beta7",
     "@blueking/cli-service-webpack": "0.0.0-beta.91",
-    "@blueking/eslint-config-bk": "^2.0.0"
+    "@blueking/eslint-config-bk": "^2.0.0",
+    "dotenv-cli": "^11.0.0"
   },
   "engines": {
     "node": ">= 14.16.1",

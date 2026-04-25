@@ -144,8 +144,20 @@ export default {
     },
     async searchHosts(){
       // TODO：可选优化项：进行参数校验，比如，部分参数为空的话，弹窗提示
+      if (!this.biz_id) {
+        this.$bkMessage({
+          message: '请先选择业务后再进行查询',
+          theme: 'error',
+          delay: 2000
+        });
+        return;
+      }
+      
       let query_data = {
-        "bk_biz_id":this.biz_id
+        "bk_biz_id":this.biz_id,
+        // 分页参数：将当前页码和每页条数传给后端
+        "start": (this.pagination.current - 1) * this.pagination.limit,
+        "limit": this.pagination.limit
       }
       // 添加可选参数
       if (this.set_id) {
@@ -169,6 +181,7 @@ export default {
       const host_res = await this.$store.dispatch('example/getHostsData',query_data,{fromCache:true})
       this.host_list = host_res.data.info
       // TODO：参照bk-table组件文档，实现分页操作
+      this.pagination.count = host_res.data.count;
     },
     async getHostDetail(bk_host_id){
       console.log('查询主机详情信息,主机ID：',bk_host_id)
@@ -206,6 +219,7 @@ export default {
         this.biz_list=res.data.info
         // this.tableData = res.data.info;
         // this.pagination.count = res.data.count;
+        console.log("res.data: ", res.data);
       } catch (e) {
         console.error(e);
       }
@@ -224,7 +238,9 @@ export default {
       this.size = size[index];
     },
     handlePageChange(page) {
+      // console.log("page: ",page);
       this.pagination.current = page;
+      this.searchHosts();
     },
     remove(row) {
       const index = this.tableData.indexOf(row);

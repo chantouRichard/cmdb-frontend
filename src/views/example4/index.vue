@@ -1,0 +1,78 @@
+<template>
+  <div class="search-wrapper">
+    <bk-table
+      style="margin-top: 15px"
+      :data="recordData"
+      :pagination="pagination"
+      @page-change="handlePageChange"
+      @page-limit-change="handlePageLimitChange"
+    >
+      <bk-table-column type="index" label="序号" align="center" width="60" />
+      <bk-table-column label="主机ID" prop="bk_host_id" width="120" />
+      <bk-table-column label="文件目录" prop="bk_file_dir" width="180" />
+      <bk-table-column label="文件后缀" prop="bk_file_suffix" width="100" />
+      <bk-table-column label="备份文件" prop="bk_backup_name" />
+      <bk-table-column
+        label="备份时间"
+        prop="bk_file_create_time"
+        width="200"
+      />
+      <bk-table-column label="备份人" prop="bk_file_operator" width="150" />
+      <bk-table-column label="备份结果" prop="bk_job_link" width="100">
+        <template slot-scope="{ row }">
+          <a :href="row.bk_job_link" target="_blank">JOB结果</a>
+        </template>
+      </bk-table-column>
+    </bk-table>
+  </div>
+</template>
+
+<script>
+export default {
+  components: {},
+  data() {
+    return {
+      list: [],
+      recordData: [],
+      pagination: {
+        current: 1,
+        count: 0,
+        limit: 10,
+      },
+    };
+  },
+  created() {
+    this.getBackupRecord();
+  },
+  methods: {
+    async getBackupRecord() {
+      console.log("start: ", (this.pagination.current - 1) * this.pagination.limit, "limit: ", this.pagination.limit);
+      let query_data = {
+        // 分页参数：将当前页码和每页条数传给后端
+        start: (this.pagination.current - 1) * this.pagination.limit,
+        limit: this.pagination.limit,
+      };
+      const res = await this.$store.dispatch(
+        "example/getBackupRecord",
+        query_data,
+        { fromCache: true }
+      );
+      this.recordData = res.data;
+      // TODO：参照bk-table组件文档，实现分页操作
+      this.pagination.count = res.total;
+    },
+    handlePageChange(page) {
+      console.log("page: ",page);
+      this.pagination.current = page;
+      this.getBackupRecord();
+    },
+    // 监听每页条数变化
+    handlePageLimitChange(limit) {
+      this.pagination.limit = limit;
+      this.pagination.current = 1; // 重置到第一页
+      this.getBackupRecord();
+    },
+  },
+};
+</script>
+

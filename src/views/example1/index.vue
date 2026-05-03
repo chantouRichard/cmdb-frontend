@@ -70,6 +70,7 @@
               :size="size"
               :pagination="pagination"
               @page-change="handlePageChange">
+              @page-limit-change="handlePageLimitChange"
       <bk-table-column label="主机ID" prop="bk_host_id" />
       <bk-table-column label="主机IP" prop="bk_host_innerip" />
       <bk-table-column label="操作人" prop="operator" />
@@ -240,6 +241,12 @@ export default {
     handlePageChange(page) {
       // console.log("page: ",page);
       this.pagination.current = page;
+      this.searchHosts();
+    },
+    // 监听每页条数变化
+    handlePageLimitChange(limit) {
+      this.pagination.limit = limit;
+      this.pagination.current = 1; // 重置到第一页
       this.searchHosts();
     },
     remove(row) {

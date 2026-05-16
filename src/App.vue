@@ -91,18 +91,18 @@ export default {
           },
           {
             name: '文件查询与备份',
-            icon: 'icon-tree-group-shape',
+            icon: 'icon-tree-application-shape',
             url: 'example3',
           },
           {
             name: '备份记录',
-            icon: 'icon-tree-group-shape',
+            icon: 'icon-tree-application-shape',
             url: 'example4',
           },
           {
             name: '仪表盘',
-            icon: 'icon-tree-group-shape',
-            url: 'example5',
+            icon: 'icon-tree-application-shape',
+            url: 'DashBoard',
           },
           {
             name: '登录信息',

@@ -20,7 +20,7 @@ const Example3 = () => import(/* webpackChunkName: 'example3' */'@/views/example
 // import Example3 from '@/views/example3'
 const Example4 = () => import(/* webpackChunkName: 'example4' */'@/views/example4');
 // import Example4 from '@/views/example4'
-const Example5 = () => import(/* webpackChunkName: 'example4' */'@/views/example5');
+const DashBoard = () => import(/* webpackChunkName: 'example4' */'@/views/DashBoard');
 // import Example4 from '@/views/example5'
 const NotFound = () => import(/* webpackChunkName: 'none' */'@/views/404');
 // import NotFound from '@/views/404'
@@ -60,9 +60,9 @@ const routes = [
         },
       },
       {
-        path: 'example5',
-        name: 'example5',
-        component: Example5,
+        path: 'DashBoard',
+        name: 'DashBoard',
+        component: DashBoard,
         meta: {
           matchRoute: '仪表盘',
         },

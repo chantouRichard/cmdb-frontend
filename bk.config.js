@@ -1,6 +1,3 @@
-
-const mockServer = require('./mock-server');
-
 module.exports = {
   host: process.env.BK_APP_HOST,
   port: process.env.BK_APP_PORT,
@@ -11,9 +8,12 @@ module.exports = {
 
   // webpack config 配置
   configureWebpack() {
+    if (process.env.NODE_ENV === 'production') {
+      return {};
+    }
     return {
       devServer: {
-        setupMiddlewares: mockServer,
+        setupMiddlewares: require('./mock-server'),
       },
     };
   },

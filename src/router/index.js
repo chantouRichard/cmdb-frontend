@@ -20,8 +20,8 @@ const Example3 = () => import(/* webpackChunkName: 'example3' */'@/views/example
 // import Example3 from '@/views/example3'
 const Example4 = () => import(/* webpackChunkName: 'example4' */'@/views/example4');
 // import Example4 from '@/views/example4'
-const DashBoard = () => import(/* webpackChunkName: 'example4' */'@/views/DashBoard');
-// import Example4 from '@/views/example5'
+const DashBoard = () => import(/* webpackChunkName: 'DashBoard' */'@/views/DashBoard');
+// import Example4 from '@/views/DashBoard'
 const NotFound = () => import(/* webpackChunkName: 'none' */'@/views/404');
 // import NotFound from '@/views/404'
 

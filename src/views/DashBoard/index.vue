@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="DashBoard" style="height: 2000px;">
     <iframe
@@ -10,17 +8,13 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
-  components: {},
+  name: 'DashBoard',
   data() {
     return {
       iframeUrl: "https://apps.ce.bktencent.com/bk-vision/embed/?uid=3UatyVhAx3Qe656cGBAjEz&bk_app_id=&bk_app_list=['whu-chentao', 'chantao20260413']&name=&show_copyright=True&watermark=True&time_readonly=False&show_time=True&show_refresh=True&start_time=now/d&end_time=now/d&preview=False&hide_toolbox=False&hide_filter=False&panels=&refresh=False"
     };
-  },
-  created() {
-  },
-  methods: {
-  },
+  }
 };
 </script>
-

@@ -5,7 +5,7 @@
   "author": "",
   "scripts": {
     "dev": "bk-cli-service-webpack dev",
-    "build": "bk-cli-service-webpack build",
+    "build": "NODE_OPTIONS=--max_old_space_size=4096 bk-cli-service-webpack build",
     "server": "node ./paas-server/index.js",
     "lint": "eslint --ext .js,.vue ./src",
     "lint-fix": "eslint --fix --ext .js,.vue ./src"
